@@ -2,18 +2,21 @@
 let player = $('.player__video').first();
 let progress = $('.progress__filled').first();
 
+// boutton marche/pause
 let toggle = true;
 
 $(".toggle").click(function (){
     if (toggle){
-        $(this).html("⏸")
+        $(this).html("⏸");
+        toggle = false;
+        player.get(0).play();
     }
     else {
         $(this).html("►");
         toggle = true;
         player.get(0).pause();
     }
-})
+});
 
 player.on("timeupdate", function (){
     $("#playbackRate").attr("value", this.currentTime/this.duration);
